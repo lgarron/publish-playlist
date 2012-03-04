@@ -4,9 +4,9 @@ Lucas Garron
 
 Sometimes you just need a playlist to be available from online, but don't want to keep all your songs in Dropbox all the time. (Or maybe you need it as a stream.)
 
-This script adds songs from a playlist to your Dropbox folder and gives you an [.m3u](http://en.wikipedia.org/wiki/M3U) URL that can be loaded in many music players, including iTunes, VLC, and mobile Safari.
+This script adds songs from a playlist to your Dropbox folder and gives you a [.m3u](http://en.wikipedia.org/wiki/M3U) URL that can be loaded in many music players, including iTunes, VLC, and mobile Safari.
 
-Since this script uses symlinks, it also takes up almost no additional lcal disk space, just Dropbox space for songs that need to be synced.
+Since this script uses symlinks, it also takes up almost no additional local disk space, just Dropbox space for songs that need to be synced.
 
 ## Sample Installation
 
