@@ -13,8 +13,8 @@
 
 #Configure:
 
-# Your Dropbox Public Folder. WITH trailing slash.
-PUBLIC_FOLDER="/Users/lgarron/Dropbox/Public/"
+# Your Dropbox Public Folder. WITHOUT trailing slash.
+PUBLIC_FOLDER="/Users/lgarron/Dropbox/Public"
 
 # The folder where you want to store your playlists (must already exist, and be in the public folder). WITHOUT trailing slash.
 MUSIC_FOLDER="/Users/lgarron/Dropbox/Public/Music"
@@ -27,8 +27,10 @@ PLAYLIST_PREFIX="Playlist-"
 
 ######
 
-RELATIVE_FOLDER_NAME=`echo "$MUSIC_FOLDER" | sed "s@$PUBLIC_FOLDER@@"`
-URL_PATH="http://dl.getdropbox.com/u/$DROPBOX_ID/$RELATIVE_FOLDER_NAME"
+RELATIVE_FOLDER_NAME=`echo "$MUSIC_FOLDER" | sed "s@$PUBLIC_FOLDER/@@"`
+echo "${RELATIVE_FOLDER_NAME}"
+# Argh, iTunes won't allow HTTPS files in imported M3U files.
+URL_PATH="http://dl.dropboxusercontent.com/u/$DROPBOX_ID/$RELATIVE_FOLDER_NAME"
 
 M3U_ORIGINAL_FILE="$1"
 M3U_ORIGINAL_FULL_NAME=`basename "$M3U_ORIGINAL_FILE"`
@@ -38,7 +40,7 @@ M3U_FILE="$MUSIC_FOLDER/$PLAYLIST_PREFIX$M3U_NAME.m3u"
 PLAYLIST_FOLDER_NAME="$PLAYLIST_PREFIX$M3U_NAME"
 PLAYLIST_FOLDER="$MUSIC_FOLDER/$PLAYLIST_PREFIX$M3U_NAME"
 
-M3U_FILE_URL="$URL_PATH/$M3U_FILE"
+M3U_FILE_URL="$URL_PATH/$PLAYLIST_PREFIX$M3U_NAME.m3u"
 M3U_FILE_URL=`echo "$M3U_FILE_URL" | sed 's/\ /%20/g'`
 
 mkdir "$MUSIC_FOLDER/$PLAYLIST_FOLDER_NAME"
